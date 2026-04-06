@@ -19,6 +19,22 @@
 
 ### 2.1 ReAct Loop Implementation
 *Diagram or description of the Thought-Action-Observation loop.*
+
+```mermaid
+graph TD
+    User((Người dùng\nTelegram Bot)) -->|Gửi yêu cầu\nCắm trại| A[Hệ thống ReAct Agent]
+    A --> B{Suy luận\n(Thought)}
+    
+    B -->|Cần dữ liệu thực tế| C[Chọn Công cụ\n(Action)]
+    B -->|Đã thu thập đủ| F[Tổng hợp kết quả\n(Final Answer)]
+
+    C -->|Truyền chuỗi JSON| D[Thực thi Mã Python\n(Action Input)]
+    D -->|search_camp_site\nget_weather_forecast\n...| E[Thu thập Dữ liệu\n(Observation)]
+    
+    E -. Cập nhật vào Context .-> B
+    F --> User
+```
+
 Hệ thống sử dụng cơ chế ReAct (Reasoning and Acting). Agent nhận câu hỏi (Prompt) -> Suy nghĩ bước tiếp theo (Thought) -> Chọn công cụ thích hợp (Action) -> Dịch tham số đầu vào (Action Input) -> Chờ hệ thống thực thi trả kết quả (Observation) -> Tiếp tục vòng lặp cho tới khi tự tin có câu trả lời cuối (Final Answer).
 
 ### 2.2 Tool Definitions (Inventory)
