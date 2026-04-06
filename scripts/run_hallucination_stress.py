@@ -413,8 +413,8 @@ def render_markdown(results: List[Dict[str, Any]], out_json: Path) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run multi-turn hallucination stress suites for chatbot baseline.")
-    parser.add_argument("--provider", default="openai", help="openrouter|openai|gemini|google|local")
-    parser.add_argument("--model", default="gpt-4o", help="Model name")
+    parser.add_argument("--provider", default=None, help="openrouter|openai|gemini|google|local|deepseek")
+    parser.add_argument("--model", default=None, help="Model name")
     parser.add_argument("--api-key", default=None, help="Optional API key override")
     parser.add_argument("--base-url", default=None, help="Optional base URL override")
     parser.add_argument(

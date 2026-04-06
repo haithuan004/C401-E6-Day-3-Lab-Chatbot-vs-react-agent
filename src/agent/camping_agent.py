@@ -53,19 +53,27 @@ tool_get_travel_and_gear_recommendations = {
     "func": get_travel_and_gear_recommendations
 }
 
-# (Bạn có thể thêm các tool khác như thời tiết, phương tiện vào list này)
 my_tools = [tool_search_camp, tool_get_weather, tool_get_travel_and_gear_recommendations]
 
 # 2. Khởi tạo LLM và Agent
 # os.environ.get("PLACES_API_KEY")
 # os.environ.get("WEATHER_API_KEY")
 
-llm = GeminiProvider(model_name="gemini-2.5-flash", api_key=GEMINI_API_KEY) # Hoặc gemini/claude
-agent = ReActAgent(llm=llm, tools=my_tools)
+from scripts.evaluate_chatbot_limitations import build_provider
 
-# 3. Chạy Agent
-user_prompt = "Tôi muốn 6/4 này đi cắm trại ở đâu đó quanh HN, gần gia lâm thì tốt cho gia đình 4 người. Tôi nên chuẩn bị đồ đạc gì?"
-final_answer = agent.run(user_prompt)
+def get_camping_agent() -> ReActAgent:
+    """Tạo và trả về ReActAgent đã được cấu hình với LLM và tools."""
+    provider_name = os.environ.get("DEFAULT_PROVIDER", "gemini")
+    # Sử dụng hàm build_provider để tự động chọn LLM theo file .env (hỗ trợ deepseek)
+    llm = build_provider(provider_override=provider_name)
+    return ReActAgent(llm=llm, tools=my_tools)
 
-print("\n=== KẾT QUẢ CUỐI CÙNG ===")
-print(final_answer)
+if __name__ == "__main__":
+    agent = get_camping_agent()
+
+    # 3. Chạy Agent
+    user_prompt = "Tôi muốn 6/4 này đi cắm trại ở đâu đó quanh HN, gần gia lâm thì tốt cho gia đình 4 người. Tôi nên chuẩn bị đồ đạc gì?"
+    final_answer = agent.run(user_prompt)
+
+    print("\n=== KẾT QUẢ CUỐI CÙNG ===")
+    print(final_answer)

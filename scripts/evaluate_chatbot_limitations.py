@@ -47,6 +47,18 @@ def build_provider(
 
         return GeminiProvider(model_name=default_model, api_key=os.getenv("GEMINI_API_KEY"))
 
+    if default_provider == "deepseek":
+        from src.core.openai_provider import OpenAIProvider
+
+        resolved_key = api_key_override or os.getenv("DEEPSEEK_API_KEY")
+        resolved_base_url = base_url_override or os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+        
+        # Override default model specifically for deepseek if not provided
+        if default_model == "openai/gpt-4o-mini":
+            default_model = "deepseek-chat"
+            
+        return OpenAIProvider(model_name=default_model, api_key=resolved_key, base_url=resolved_base_url)
+
     if default_provider == "local":
         from src.core.local_provider import LocalProvider
 
