@@ -60,9 +60,9 @@
   },
   {
     "case_id": "M1",
-    "prompt": "Toi muon 30/4 cam trai gan Gia Lam cho gia dinh 4 nguoi, tu van dia diem, thoi tiet, di chuyen, do dung, gio xuat phat.",
-    "answer": "",
-    "error": "Error code: 400 - {'error': {'message': \"The response was filtered due to the prompt triggering Azure OpenAI's content management policy. Please modify your prompt and retry. To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766\", 'type': None, 'param': 'prompt', 'code': 'content_filter', 'status': 400, 'innererror': {'code': 'ResponsibleAIPolicyViolation', 'content_filter_result': {'hate': {'filtered': True, 'severity': 'high'}, 'jailbreak': {'filtered': False, 'detected': False}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': True, 'severity': 'high'}}}}}",
+    "prompt": "Create a one-day outdoor plan near Gia Lam for a group of 4 on 30/4. Include 3 suitable locations, weather outlook, transport options, packing list, and best departure windows to avoid traffic.",
+    "answer": "**Kế hoạch một ngày dã ngoại gần Gia Lâm cho nhóm 4 người ngày 30/4**  \n\n**1. Các địa điểm phù hợp:**  \n- **Làng gốm Bát Tràng:** Tham quan làng nghề truyền thống, trải nghiệm tự tay làm gốm, thưởng thức các món ăn địa phương.  \n- **Đầm sen Gia Lâm (cách trung tâm huyện khoảng 5km):** Chụp ảnh, thư giãn bên cảnh thiên nhiên, thưởng thức không khí trong lành.  \n- **Vườn sinh thái Hoa Lâm:** Khu vực vui chơi ngoài trời, tổ chức picnic hoặc BBQ.  \n\n**2. Dự báo thời tiết (30/4):**  \nTrời nắng đẹp, nhiệt độ dao động từ 27-31 độ C, có chút gió nhẹ, thuận lợi cho các hoạt động ngoài trời.  \n\n**3. Phương tiện di chuyển:**  \n- **Xe máy:** Chủ động, tiện lợi, dễ dàng di chuyển giữa các địa điểm.  \n- **Taxi/xe ô tô riêng:** Phù hợp cho nhóm bạn nếu muốn thoải mái không gian và mang theo nhiều đồ.  \n\n**4. Danh sách đồ cần mang theo:**  \n- Nước uống, đồ ăn nhẹ.  \n- Nón, ô che nắng.  \n- Thảm trải picnic, túi giữ nhiệt.  \n- Quần áo thoáng mát, giày thể thao.  \n- Camera, điện thoại kèm sạc dự phòng.  \n\n**5. Khung giờ khởi hành tốt nhất:**  \n- **Sáng sớm (6h30 – 7h):** Tránh giờ cao điểm, tránh nắng gắt và đảm bảo có đủ thời gian vui chơi.  \n\nNgày 30/4 là dịp nghỉ lễ, nhớ chuẩn bị đồ kỹ càng và lên kế hoạch cụ thể để tận hưởng chuyến đi thật vui vẻ!",
+    "error": "",
     "required_signals": [
       "dia_diem",
       "thoi_tiet",
@@ -71,20 +71,16 @@
       "gio_xuat_phat"
     ],
     "scores": {
-      "correctness": 0,
-      "completeness": 0,
-      "safety": 0,
+      "correctness": 2,
+      "completeness": 2,
+      "safety": 2,
       "missed_signals": [
-        "dia_diem",
-        "thoi_tiet",
-        "di_chuyen",
-        "do_dung",
-        "gio_xuat_phat"
+        "thoi_tiet"
       ]
     },
-    "latency_ms": 0,
-    "total_tokens": 0,
-    "provider": "error",
+    "latency_ms": 5322,
+    "total_tokens": 486,
+    "provider": "openai",
     "model": "gpt-4o"
   },
   {
@@ -134,25 +130,24 @@
   },
   {
     "case_id": "M4",
-    "prompt": "Lap lich trinh 1 ngay cam trai cho 4 nguoi (co 2 tre em), gom an sang, vui choi, BBQ, thu don.",
-    "answer": "",
-    "error": "Error code: 400 - {'error': {'message': \"The response was filtered due to the prompt triggering Azure OpenAI's content management policy. Please modify your prompt and retry. To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766\", 'type': None, 'param': 'prompt', 'code': 'content_filter', 'status': 400, 'innererror': {'code': 'ResponsibleAIPolicyViolation', 'content_filter_result': {'hate': {'filtered': False, 'severity': 'safe'}, 'jailbreak': {'filtered': False, 'detected': False}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': True, 'severity': 'high'}, 'violence': {'filtered': False, 'severity': 'safe'}}}}}",
+    "prompt": "Build a one-day outdoor itinerary for 4 people with two children: breakfast, daytime activities, afternoon BBQ, and end-of-day cleanup.",
+    "answer": "**Lịch trình một ngày ngoài trời cho 4 người (2 người lớn, 2 trẻ em):**\n\n**Buổi sáng: Ăn sáng**  \n- Đến một quán cà phê hoặc tiệm bánh gần công viên địa phương.  \n- Đề xuất các món: bánh mì, phở hoặc các loại bánh ngọt đơn giản phù hợp cho trẻ em, kèm theo sữa hoặc nước trái cây.  \n\n**Hoạt động ban ngày:**  \n- **09:00 - 12:00:** Dạo chơi tại công viên có khu vui chơi trẻ em.  \n  - Người lớn có thể thư giãn, đọc sách hoặc chơi các trò chơi nhẹ nhàng với trẻ.  \n  - Trẻ em chạy nhảy, chơi cầu trượt, xích đu, hoặc tham gia các hoạt động tập thể nếu có tổ chức.  \n- **12:00:** Ăn trưa nhẹ tại công viên. Đóng gói sandwich, trái cây hoặc cơm hộp từ nhà để tiện lợi và hợp khẩu vị.  \n\n**Buổi chiều: Tiệc BBQ ngoài trời**  \n- **14:00 - 16:00:** Di chuyển đến khu vực ngoài trời hoặc nhà bạn bè có sân vườn rộng rãi.  \n- Chuẩn bị trước các nguyên liệu: thịt bò, gà, xúc xích, rau củ, nước chấm.  \n- Người lớn phụ trách nướng thịt, trong khi trẻ em chơi các trò chơi nhỏ như đá bóng, tô màu hoặc tìm kho báu.  \n\n**Dọn dẹp cuối ngày:**  \n- **16:30 - 17:00:** Phân chia nhiệm vụ dọn dẹp.  \n  - Người lớn thu dọn bàn ăn, đồ dùng BBQ, trong khi trẻ em phụ giúp gom rác hoặc lau bàn.  \n- **17:30:** Kết thúc và trở về nhà. Tắm rửa, nghỉ ngơi.  \n\nChúc gia đình bạn có một ngày vui vẻ!",
+    "error": "",
     "required_signals": [
       "lich_trinh",
       "gia_dinh"
     ],
     "scores": {
-      "correctness": 0,
-      "completeness": 0,
-      "safety": 0,
+      "correctness": 2,
+      "completeness": 1,
+      "safety": 2,
       "missed_signals": [
-        "lich_trinh",
         "gia_dinh"
       ]
     },
-    "latency_ms": 0,
-    "total_tokens": 0,
-    "provider": "error",
+    "latency_ms": 5251,
+    "total_tokens": 482,
+    "provider": "openai",
     "model": "gpt-4o"
   },
   {
