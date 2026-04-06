@@ -29,7 +29,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     user_text = update.message.text
     
     # Gửi thông báo đang xử lý
-    processing_message = await update.message.reply_text("⏳ Đang suy nghĩ và lên kế hoạch cho bạn...")
+    processing_message = await update.message.reply_text("Đang suy nghĩ và lên kế hoạch cho bạn...")
     
     try:
         # Tạo agent mới cho Request này
@@ -41,13 +41,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         
         await processing_message.edit_text(final_answer)
     except Exception as e:
-        await processing_message.edit_text(f"❌ Đã xảy ra lỗi trong quá trình xử lý: {str(e)}")
+        await processing_message.edit_text(f"Đã xảy ra lỗi trong quá trình xử lý: {str(e)}")
 
 def main() -> None:
     """Start the bot."""
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token or token == "your_telegram_bot_token_here":
-        print("❌ Lỗi: TELEGRAM_BOT_TOKEN chưa được cài đặt trong file .env!")
+        print("Lỗi: TELEGRAM_BOT_TOKEN chưa được cài đặt trong file .env!")
         return
 
     # Tạo Application mới sử dụng python-telegram-bot v20+
@@ -58,7 +58,7 @@ def main() -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     # Chạy bot
-    print("🚀 Bot Telegram đang chạy... Nhấn Ctrl+C để dừng.")
+    print("Bot Telegram đang chạy... Nhấn Ctrl+C để dừng.")
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":
