@@ -10,6 +10,7 @@ from core.gemini_provider import GeminiProvider
 from agent import ReActAgent
 from tools.location_tools import search_camp_site 
 from tools.weather_tools import get_weather_forecast
+from tools.get_travel_and_gear_recommendations_tool import get_travel_and_gear_recommendations
 
 from dotenv import load_dotenv
 
@@ -42,8 +43,18 @@ tool_get_weather = {
     "func": get_weather_forecast  # Trỏ trực tiếp đến hàm Python của bạn
 }
 
+tool_get_travel_and_gear_recommendations = {
+    "name": "get_travel_and_gear_recommendations",
+    "description": (
+        "Combine campsite search and weather forecast into one structured recommendation."
+        "This tool does not fabricate live data: it relies on the outputs of"
+        "search_camp_site(...) and get_weather_forecast(...)."
+    ),
+    "func": get_travel_and_gear_recommendations
+}
+
 # (Bạn có thể thêm các tool khác như thời tiết, phương tiện vào list này)
-my_tools = [tool_search_camp, tool_get_weather]
+my_tools = [tool_search_camp, tool_get_weather, tool_get_travel_and_gear_recommendations]
 
 # 2. Khởi tạo LLM và Agent
 # os.environ.get("PLACES_API_KEY")
@@ -53,7 +64,7 @@ llm = GeminiProvider(model_name="gemini-2.5-flash", api_key=GEMINI_API_KEY) # Ho
 agent = ReActAgent(llm=llm, tools=my_tools)
 
 # 3. Chạy Agent
-user_prompt = "Tôi muốn 30/4 này đi cắm trại ở đâu đó quanh HN, gần gia lâm thì tốt cho gia đình 4 người."
+user_prompt = "Tôi muốn 6/4 này đi cắm trại ở đâu đó quanh HN, gần gia lâm thì tốt cho gia đình 4 người. Tôi nên chuẩn bị đồ đạc gì?"
 final_answer = agent.run(user_prompt)
 
 print("\n=== KẾT QUẢ CUỐI CÙNG ===")
